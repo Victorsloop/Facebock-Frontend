@@ -6,6 +6,7 @@ import Header from './Components/Header'
 import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Counter from './Components/Counter'
+
 class App extends React.Component{
   state = {
     user: {}
@@ -13,13 +14,33 @@ class App extends React.Component{
 
   render(){
     return(
-      <>
-      < Counter/>
-      < Header/>
-      < Welcome/>
-      < Route path="/welcome" render={() => <Welcome/>}/>
-      < Route path="/signup" render={() => <Signup/>}/>
-      </>
+      <div className={"parent"}>
+
+        <div className="header-container">          
+        < Header/>
+        {/* < Welcome/> */}
+        < Route path="/welcome" render={() => <Welcome/>}/>
+        
+        </div>
+
+        <div className="profile-container">          
+        PROFILE
+        </div>
+
+        <div  className="post-container">          
+        POSTS
+        < Route path="/signup" render={() => <Signup/>}/>
+        </div>
+
+        <div  className="messenger-container">
+          MESSENGER          
+
+        </div>
+          
+      {/* < Counter/> */}
+      
+      
+      </div>
       
     )
   }
