@@ -1,10 +1,12 @@
 import React from 'react'
-class Usercontainer extends React.Component{
+class UserContainer extends React.Component{
     render(){
         return(
-            null
+            <div>
+                UserContainer
+            </div>
         )
     }
 }
 
-export default Usercontainer
+export default UserContainer

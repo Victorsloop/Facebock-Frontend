@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+
 import './App.css';
 import React from 'react'
 import Welcome from './Components/Welcome'
@@ -6,6 +6,11 @@ import Header from './Components/Header'
 import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Counter from './Components/Counter'
+import Login from './Components/Login'
+import PostContainer from './Container/PostContainer'
+import HeaderContainer from './Container/HeaderContainer'
+import MessengerContainer from './Container/MessengerContainer'
+import UserContainer from './Container/Usercontainer'
 class App extends React.Component{
   state = {
     user: {}
@@ -13,34 +18,21 @@ class App extends React.Component{
 
   render(){
     return(
-      <>
+      < >
       < Counter/>
-      < Header/>
+      {/* < Header class="div1"/> */}
       < Welcome/>
+      {/* < HeaderContainer class="div1" / > */}
+      {/* < UserContainer class="div2" / > */}
+      {/* < PostContainer class="div3" / > */}
+      {/* < MessengerContainer class="div1" / > */}
+
       < Route path="/welcome" render={() => <Welcome/>}/>
       < Route path="/signup" render={() => <Signup/>}/>
+      < Route path="/login" render={() => <Login/>}/>
       </>
-      
     )
   }
 }
-  // return (
-
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
 
 export default App;
