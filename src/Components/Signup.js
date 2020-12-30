@@ -7,13 +7,22 @@ class Signup extends React.Component{
         password:""
     }
 
+    inputHandler = (e) => {
+        this.setState({[e.target.name]:e.target.value})
+        console.log(e.target.value)
+    }
+    submitHandler = (e) => {
+        e.preventDefault()
+        this.props.submitHandler(this.state)
+    }
+
     render(){
         return (
-            <form>
-                <input type="text" name="Username" placeholder="Username" value="" onChange=""/> 
-                <input type="text" name="Password" placeholder="Password" value="" onChange=""/> 
-                <input type="text" name="Hometown" placeholder="Hometown" value="" onChange=""/> 
-                <input type="number" name="Age" placeholder="Age" value="" onChange=""/> 
+            <form onSubmit = {this.submitHandler}>
+                <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.inputHandler} /> 
+                <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.inputHandler}/> 
+                <input type="text" name="Hometown" placeholder="Hometown" value={this.state.hometown} onChange={this.inputHandler}/> 
+                <input type="number" name="Age" placeholder="Age" value={this.state.age} onChange={this.inputHandler}/> 
                 <input type="submit" value="Sign Up"/>
             </form>
         )

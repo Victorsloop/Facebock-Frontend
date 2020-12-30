@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import FilterPost from '../Components/FilterPost'
 
-export class PostContainer extends Component {
+class PostContainer extends Component {
+
+    filterHandler = (e) => {
+        this.setState({filterMovie: e.target.value})
+    }
     render() {
         return (
             <div>
                 PostContainer
+                < FilterPost filter={this.state.filterPost} filterHandler={this.filterHandler}/>
             </div>
         )
     }

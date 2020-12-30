@@ -4,8 +4,18 @@ import {combineReducers} from 'redux'
 
 const defaultState = {
     counter:0,
-    user:null
+    user:null,
+    api: []
 }
+
+// function userReducer(prevState = defaultState.api, action){
+//     switch(action.type){
+//         case "GET_USER":
+//             return action.payload
+//         case "POST_USER"
+//     }
+
+// }
 
 function counterReducer(prevState= defaultState.counter, action){
     switch(action.type){
@@ -17,7 +27,7 @@ function counterReducer(prevState= defaultState.counter, action){
             console.log("Reducer before", action)
             console.log("Reducer after", action)
              return --prevState
-        default:
+         default:
         return prevState
     }
    
@@ -29,7 +39,17 @@ function userReducer(prevState= defaultState.user, action){
         return{user:"user in here"}
         default:
             return prevState
+        case "GET_USER":
+            return action.payload
+        case "POST_USER":
+            return [...prevState, action.payload]
+        case "UPDATE_USER":
+            return [...prevState, action.payload]
+         default: 
+            return prevState
+        
     }
+    
 
 }
 //pure functions
@@ -38,6 +58,8 @@ function userReducer(prevState= defaultState.user, action){
 const rootReducer =  combineReducers({
     counter: counterReducer,
     user: userReducer
+    
+    // api: apiReducer
 })
 
 export default rootReducer 
