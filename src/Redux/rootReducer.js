@@ -37,18 +37,15 @@ function userReducer(prevState= defaultState.user, action){
     switch(action.type){
         case"LOGIN":
         return{user:"user in here"}
-        default:
-            return prevState
         case "GET_USER":
             return action.payload
         case "POST_USER":
             return [...prevState, action.payload]
         case "UPDATE_USER":
-            return [...prevState, action.payload]
-         default: 
+            return [...prevState, action.payload]        
+        default:
             return prevState
-        
-    }
+                }
     
 
 }
