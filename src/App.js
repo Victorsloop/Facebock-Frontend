@@ -2,7 +2,7 @@
 import './App.css';
 import React from 'react'
 import Welcome from './Components/Welcome'
-import HomePage from './Container/HomePage'
+import MessengerContainer from './Container/MessengerContainer'
 import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Login from './Components/Login'
@@ -10,7 +10,22 @@ import Header from './Components/Header'
 // import Counter from './Components/Counter'
 class App extends React.Component{
   state = {
-    user: {}
+    user: null
+  }
+
+  signInHandler = (userInfo) => {
+    console.log("loggin in", userInfo)
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {
+        accepts: "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ user: userInfo})
+      
+    })
+    .then(r => r.json())
+    .then(data => this.setState({ user: data.user}))
   }
 
   
@@ -29,17 +44,44 @@ class App extends React.Component{
 
         <div  className="post-container">          
         {/* POSTS */}
-        < Route path='/' component={HomePage}/>
-        < Route path="/welcome" render={() => <Welcome/>}/>
+        {/* < Route path='/' component={HomePage}/> */}
 
-        {/* < Route path="/signup" render={() => <Signup/>}/> */}
-        {/* < Route path="/login" render={() => <Login onsubmit={}/>}/> */}
-        </div>
+        <>
+        { this.props.user ?
+          <>
 
-        <div  className="messenger-container">
-          {/* MESSENGER           */}
+          <h1>logged in</h1>
+          </>
 
-        </div>
+          :
+
+          <>
+          < Route path="/" render={() => <Welcome user={this.state.user}/>}/>
+          < Route path="/" render={() => <Signup/>}/>
+          < Route path="/" render={() => <Login submitHandler={this.signInHandler} />}/>
+          
+          </>
+
+        
+        }
+        </>
+
+        </div> 
+
+          <div  className="messenger-container">
+
+           <>
+            { this.props.user ? 
+            
+            <MessengerContainer />
+            :
+            <div>
+
+            </div>
+            }
+           </> 
+            
+          </div>
           
       {/* < Counter/> */}
       
