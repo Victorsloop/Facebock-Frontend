@@ -11,7 +11,7 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
-store.dispatch({type: "INCREMENT_COUNTER"})
+store.dispatch({type: "FETCH_POST"})
 
 ReactDOM.render(
   <Provider store={store}>

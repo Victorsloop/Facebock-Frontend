@@ -7,6 +7,7 @@ import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Login from './Components/Login'
 import Header from './Components/Header'
+import PostContainer from './Container/PostContainer';
 // import Counter from './Components/Counter'
 class App extends React.Component{
   state = {
@@ -29,6 +30,7 @@ class App extends React.Component{
 
         <div  className="post-container">          
         {/* POSTS */}
+        <PostContainer/>
         < Route path='/' component={HomePage}/>
         < Route path="/welcome" render={() => <Welcome/>}/>
 
