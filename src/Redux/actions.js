@@ -18,25 +18,13 @@ export function incrementCounter(){
 //         }   
 
 export function fetchPosts(){
-    return function (dispatch,getState){
+    console.log("IN FETCH ACTION")
+    return function (dispatch, getState){
         fetch("http://localhost:5000/posts")
         .then(r => r.json())
         .then (arrayOfPost => {
             dispatch({type: FETCH_POSTS, payload : arrayOfPost})
         })
+        .catch(console.log)
     }
 }
-
-
-
-// export function apiReducer() {
-//     return function(dispatch, getState){
-//         fetch("http://localhost:5000/users)
-//         .then(r => r.json())
-//         .then(array => {
-            
-//             dispatch({type: GET_USER, payload: user})
-//         })
-//         .catch(console.log)
-//     }
-// }

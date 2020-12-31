@@ -5,6 +5,11 @@ import { fetchPosts } from '../Redux/actions'
 
 class PostContainer extends Component {
 
+    state ={
+        filterPost: "",
+        postArray : []
+    }
+
     componentDidMount(){
         this.props.getPosts()
         }

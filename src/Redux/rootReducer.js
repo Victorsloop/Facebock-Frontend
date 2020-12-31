@@ -5,8 +5,8 @@ import {combineReducers} from 'redux'
 const defaultState = {
     counter:0,
     user:null,
-    api: [],
-    posts:{}
+    posts:[]
+    // api: [],
 }
 function counterReducer(prevState= defaultState.counter, action){
     switch(action.type){
@@ -41,8 +41,8 @@ function userReducer(prevState= defaultState.user, action){
 
 }
 
-
-function postsReducer(prevState = defaultState.post, action){
+    
+function postsReducer(prevState = defaultState.posts, action){
     switch(action.type){
         case "FETCH_POSTS":
             console.log("IN POST REDUCER", action)
