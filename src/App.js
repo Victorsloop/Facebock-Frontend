@@ -8,6 +8,7 @@ import Signup from './Components/Signup';
 import Login from './Components/Login'
 import Header from './Components/Header'
 import PostContainer from './Container/PostContainer';
+import Navbar from './Components/Navbar'
 // import Counter from './Components/Counter'
 class App extends React.Component{
   state = {
@@ -19,9 +20,9 @@ class App extends React.Component{
   render(){
     return(
       <div className={"parent"}>
-
         <div className="header-container">
-        <Header />          
+        <Header />      
+       < Navbar/>    
         </div>
 
         <div className="profile-container">          
@@ -33,6 +34,8 @@ class App extends React.Component{
         <PostContainer/>
         < Route path='/' component={HomePage}/>
         < Route path="/welcome" render={() => <Welcome/>}/>
+        < Route path="/login" render={() => <Login/>}/>
+        
 
         {/* < Route path="/signup" render={() => <Signup/>}/> */}
         {/* < Route path="/login" render={() => <Login onsubmit={}/>}/> */}

@@ -45,16 +45,16 @@ function userReducer(prevState= defaultState.user, action){
 function postsReducer(prevState = defaultState.posts, action){
     switch(action.type){
         case "FETCH_POSTS":
-            console.log("IN POST REDUCER", action)
+            console.log("IN POST REDUCER Fetching", action)
             return action.payload
-            case "ADD_POST":
-                console.log("IN POST REDUCER", action)
-                return prevState
+            case "ADD_POSTS":
+                console.log("IN POST REDUCER Adding", action)
+                return [...prevState, action.payload]
                 case "EDIT_POSTS":
                     console.log("IN POST REDUCER", action)
                     return prevState
                     case "DELETE_POSTS":
-                        console.log("IN POST REDUCER", action)
+                        console.log("IN POST REDUCER Deleting", action)
                         return prevState
                     default:
                         return prevState
