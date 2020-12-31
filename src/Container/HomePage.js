@@ -10,7 +10,7 @@ import '../App.css';
 export class HomePage extends Component {
 
     state = {
-        currentUser:[]
+        currentUser: null
     }
 
     componentDidMount(){
