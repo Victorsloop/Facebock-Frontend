@@ -1,7 +1,18 @@
 import React, { Component } from 'react'
 import FilterPost from '../Components/FilterPost'
+import {connect} from 'react-redux'
+import { fetchPosts } from '../Redux/actions'
 
 class PostContainer extends Component {
+
+    state ={
+        filterPost: "",
+        postArray : []
+    }
+
+    componentDidMount(){
+        this.props.getPosts()
+        }
 
     filterHandler = (e) => {
         this.setState({filterMovie: e.target.value})
@@ -15,5 +26,13 @@ class PostContainer extends Component {
         )
     }
 }
+function msp(){
+    return{}
+}
 
-export default PostContainer
+function mdp(dispatch){
+    return{getPosts: () => dispatch(fetchPosts()) }
+    
+}
+
+export default connect(msp,mdp)(PostContainer)

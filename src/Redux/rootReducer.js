@@ -5,18 +5,9 @@ import {combineReducers} from 'redux'
 const defaultState = {
     counter:0,
     user:null,
-    api: []
+    posts:[]
+    // api: [],
 }
-
-// function userReducer(prevState = defaultState.api, action){
-//     switch(action.type){
-//         case "GET_USER":
-//             return action.payload
-//         case "POST_USER"
-//     }
-
-// }
-
 function counterReducer(prevState= defaultState.counter, action){
     switch(action.type){
         case "INCREMENT_COUNTER":
@@ -49,12 +40,34 @@ function userReducer(prevState= defaultState.user, action){
     
 
 }
+
+    
+function postsReducer(prevState = defaultState.posts, action){
+    switch(action.type){
+        case "FETCH_POSTS":
+            console.log("IN POST REDUCER", action)
+            return action.payload
+            case "ADD_POST":
+                console.log("IN POST REDUCER", action)
+                return prevState
+                case "EDIT_POSTS":
+                    console.log("IN POST REDUCER", action)
+                    return prevState
+                    case "DELETE_POSTS":
+                        console.log("IN POST REDUCER", action)
+                        return prevState
+                    default:
+                        return prevState
+    }
+}
+
 //pure functions
 
 
 const rootReducer =  combineReducers({
     counter: counterReducer,
-    user: userReducer
+    user: userReducer,
+    posts: postsReducer
     
     // api: apiReducer
 })

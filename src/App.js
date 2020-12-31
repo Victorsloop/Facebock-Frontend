@@ -7,6 +7,7 @@ import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Login from './Components/Login'
 import Header from './Components/Header'
+import PostContainer from './Container/PostContainer';
 // import Counter from './Components/Counter'
 class App extends React.Component{
   state = {
@@ -44,7 +45,13 @@ class App extends React.Component{
 
         <div  className="post-container">          
         {/* POSTS */}
+<<<<<<< HEAD
         {/* < Route path='/' component={HomePage}/> */}
+=======
+        <PostContainer/>
+        < Route path='/' component={HomePage}/>
+        < Route path="/welcome" render={() => <Welcome/>}/>
+>>>>>>> 7dde004c7e6103fd66874625e06f83c6007b18f9
 
         <>
         { this.props.user ?
