@@ -1,4 +1,6 @@
 import React from 'react'
+// import {signupUser} from '../Redux/actions'
+// import {connect} from 'react-redux'
 
 class Signup extends React.Component{
 
@@ -13,7 +15,9 @@ class Signup extends React.Component{
     }
     submitHandler = (e) => {
         e.preventDefault()
+        // this.props.createUsers(this.state)
         this.props.submitHandler(this.state)
+
     }
 
     render(){
@@ -28,4 +32,14 @@ class Signup extends React.Component{
         )
     }
 }
+
+// function mdp(dispatch){
+//     return {
+//         createUsers: (newUserObject) => dispatch(signupUser(newUserObject))
+//     }
+// }
+
+
+
+// export default connect(null, mdp)(Signup)
 export default Signup

@@ -55,7 +55,10 @@ export function loginUser(userObj) {
 }
 
 export function signupUser(userObj) {
+
+
     return function (dispatch, getState) {
+        console.log("userobj in signup",userObj)
         fetch('http://localhost:5000/users', {
             method: "POST",
             headers: {
@@ -72,3 +75,7 @@ export function signupUser(userObj) {
             .catch(console.log)
     }
 }
+
+// export function returningUser(userObj) {
+//     return {type: RETURNING, payload: userObj}
+// }

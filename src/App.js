@@ -9,7 +9,7 @@ import Login from './Components/Login'
 import Header from './Components/Header'
 import Navbar from './Components/Navbar'
 import PostContainer from './Container/PostContainer';
-import { loginUser, signupUser } from './Redux/actions'
+import { loginUser, signupUser} from './Redux/actions'
 import { connect } from 'react-redux'
 
 // import Counter from './Components/Counter'
@@ -46,12 +46,23 @@ class App extends React.Component{
     .then(console.log)
   }
 
-  componentDidMount(){
-    const token = localStorage.getItem("token")
-    if(token){
-      console.log("logged in token", token)
-    }
-  }
+  // componentDidMount(){
+  //   const token = localStorage.getItem("token")
+  //   if(token){
+  //     console.log("logged in token", token)
+  //     fetch("http://localhost:5000/login", {
+  //     method: "POST",
+  //     headers: {
+  //       accepts: "application/json",
+  //       "content-type": "application/json"
+  //     },
+  //     body: JSON.stringify({ user: token})
+      
+  //   })
+  //   .then(r => r.json())
+  //   .then(returningUser => this.setState({ user: returningUser.user}))
+  //   }
+  // }
 
 
 
