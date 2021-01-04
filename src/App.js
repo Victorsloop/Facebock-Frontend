@@ -8,7 +8,7 @@ import Signup from './Components/Signup';
 import Login from './Components/Login'
 import Header from './Components/Header'
 import PostContainer from './Container/PostContainer';
-import { loginUser } from './Redux/actions'
+import { loginUser, signupUser } from './Redux/actions'
 import { connect } from 'react-redux'
 
 // import Counter from './Components/Counter'
@@ -32,27 +32,35 @@ class App extends React.Component{
     .then(data => this.setState({ user: data.user}))
   }
 
-  // componentDidMount(){
-  //   const token = localStorage.getItem("token")
-  //   if(token){
-  //     fetch('http://localhost:5000//profile', {
-  //       method: "GET",
-  //       headers: {
-  //         "Authorization": 'Bearer ' + token
-  //       }
-  //     })
-  //       .then(r => r.json())
-  //       .then(returningUser => {
-  //         this.props.returning(returningUser)
-  //       })
-  //   }
-  // }
+  signUpHandler = (userObj) => {
+    fetch('http://localhost:5000/users', {
+      method: "POST",
+      header: {
+        accepts: "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({user: userObj})
+    })
+    .then(r => r.json())
+    .then(console.log)
+  }
+
+  componentDidMount(){
+    const token = localStorage.getItem("token")
+    if(token){
+      console.log("logged in token", token)
+    }
+  }
+
+
 
   reduxSigninSubmitHandler = (userObj) => {
     this.props.login(userObj)
   }
-
   
+  reduxSignupSubmitHandler = (userObj) => {
+    this.props.signup(userObj)
+  }
 
   render(){
     return(
@@ -87,7 +95,7 @@ class App extends React.Component{
 
           <>
           < Route path="/" render={() => <Welcome user={this.state.user}/>}/>
-          < Route path="/signup" render={() => <Signup/>}/>
+          < Route path="/signup" render={() => <Signup submitHandler={this.reduxSignupSubmitHandler}/>}/>
           < Route path="/login" render={() => <Login submitHandler={this.reduxSigninSubmitHandler} />}/>
           
           </>
@@ -124,7 +132,8 @@ class App extends React.Component{
 
 function mdp(dispatch){
   return {
-    login: (userObj) => dispatch(loginUser(userObj)) 
+    login: (userObj) => dispatch(loginUser(userObj)),
+    signup: (userObj) => dispatch(signupUser(userObj)) 
   }
 }
 

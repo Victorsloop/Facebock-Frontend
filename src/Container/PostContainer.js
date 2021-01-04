@@ -18,16 +18,34 @@ class PostContainer extends Component {
         this.setState({filterMovie: e.target.value})
     }
     render() {
+        console.log("post container props",this.props)
         return (
-            <div>
+
+
+            <>
+                {this.props.user ? 
+                <>
                 PostContainer
                 < FilterPost filter={this.state.filterPost} filterHandler={this.filterHandler}/>
-            </div>
+
+                </>
+                :
+                <>
+                <h1>not logged in</h1>
+
+                </>        
+                }
+            </>
         )
     }
 }
-function msp(){
-    return{}
+
+const msp = (state) => {
+    console.log("current state", state)
+    return { user: state.user}
+    
+
+
 }
 
 function mdp(dispatch){
