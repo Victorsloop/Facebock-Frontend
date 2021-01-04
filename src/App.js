@@ -86,11 +86,12 @@ class App extends React.Component{
       fetch('http://localhost:5000/profile', {
         method: "GET",
         headers: {
-          "Authorization": 'Bearer ' + token
+          "Authorization": `Bearer ${token}`
         }
       })
         .then(r => r.json())
         .then(returningUser => {
+          console.log("returning user", returningUser)
           this.props.returning(returningUser.user)
         })
     }

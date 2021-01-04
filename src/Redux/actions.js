@@ -1,4 +1,4 @@
-import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS, RETURNING} from './actionTypes'
+import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS, GET_USER} from './actionTypes'
 //Functions that reutrn actions, hold all our actions that return 
 export function incrementCounter(){
     return {type:INCREMENT}
@@ -77,5 +77,5 @@ export function signupUser(userObj) {
 }
 
 export function returningUser(userObj) {
-    return {type: RETURNING, payload: userObj}
+    return {type: GET_USER, payload: userObj}
 }
