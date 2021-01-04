@@ -27,7 +27,12 @@ function counterReducer(prevState= defaultState.counter, action){
 function userReducer(prevState= defaultState.user, action){
     switch(action.type){
         case"LOGIN":
-        return{user:"user in here"}
+            console.log("logging in", action.payload)
+            return action.payload
+        case"SIGNUP":
+            console.log("creating user", action.payload)
+            return action.payload
+        
         case "GET_USER":
             return action.payload
         case "POST_USER":
@@ -35,6 +40,7 @@ function userReducer(prevState= defaultState.user, action){
         case "UPDATE_USER":
             return [...prevState, action.payload]        
         default:
+
             return prevState
                 }
     

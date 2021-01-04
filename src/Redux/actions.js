@@ -1,4 +1,4 @@
-import {INCREMENT,FETCH_POSTS,ADD_POSTS} from './actionTypes'
+import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS} from './actionTypes'
 //Functions that reutrn actions, hold all our actions that return 
 export function incrementCounter(){
     return {type:INCREMENT}
@@ -15,6 +15,7 @@ export function fetchPosts(){
         .catch(console.log)
     }
 }
+
 export function addPosts(newPostObject){
     console.log("IN FETCH ACTION ADDING")
     return function (dispatch, getState){
@@ -29,5 +30,45 @@ export function addPosts(newPostObject){
         .then(r => r.json())
         .then (postObject => dispatch({type: ADD_POSTS ,payload: postObject}))
         .catch(console.log)
+    }
+}
+
+
+export function loginUser(userObj) {
+    return function(dispatch, getState){
+        fetch('http://localhost:5000/login', {
+            method: "POST",
+            headers: {
+                "Accepts": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({ user: userObj })
+        })
+            .then(r => r.json())
+            .then(checkedUserObj => {
+                console.log("checkedUserObj:",checkedUserObj)
+                localStorage.setItem("token", checkedUserObj.jwt)
+                dispatch({type: LOGIN, payload: checkedUserObj})
+            })
+            .catch(console.log)
+    }
+}
+
+export function signupUser(userObj) {
+    return function (dispatch, getState) {
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                "Accepts": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({ user: userObj })
+        })
+            .then(r => r.json())
+            .then(newUserObj => {
+                localStorage.setItem("token", newUserObj.jwt)
+                dispatch({type: SIGNUP, payload: newUserObj})
+            })
+            .catch(console.log)
     }
 }

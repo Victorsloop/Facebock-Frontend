@@ -7,9 +7,11 @@ import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Login from './Components/Login'
 import Header from './Components/Header'
-import PostContainer from './Container/PostContainer';
 import Navbar from './Components/Navbar'
-import HomePage from './Container/HomePage'
+import PostContainer from './Container/PostContainer';
+import { loginUser, signupUser } from './Redux/actions'
+import { connect } from 'react-redux'
+
 // import Counter from './Components/Counter'
 class App extends React.Component{
   state = {
@@ -31,7 +33,35 @@ class App extends React.Component{
     .then(data => this.setState({ user: data.user}))
   }
 
+  signUpHandler = (userObj) => {
+    fetch('http://localhost:5000/users', {
+      method: "POST",
+      header: {
+        accepts: "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({user: userObj})
+    })
+    .then(r => r.json())
+    .then(console.log)
+  }
+
+  componentDidMount(){
+    const token = localStorage.getItem("token")
+    if(token){
+      console.log("logged in token", token)
+    }
+  }
+
+
+
+  reduxSigninSubmitHandler = (userObj) => {
+    this.props.login(userObj)
+  }
   
+  reduxSignupSubmitHandler = (userObj) => {
+    this.props.signup(userObj)
+  }
 
   render(){
     return(
@@ -47,10 +77,14 @@ class App extends React.Component{
 
         <div  className="post-container">          
         {/* POSTS */}
+
         {/* < Route path='/' component={HomePage}/> */}
-        <PostContainer/>
-        < Route path='/' component={HomePage}/>
+
+        {/* <PostContainer/> */}
+        
         < Route path="/welcome" render={() => <Welcome/>}/>
+
+
         <>
         { this.props.user ?
           <>
@@ -62,8 +96,10 @@ class App extends React.Component{
 
           <>
           < Route path="/" render={() => <Welcome user={this.state.user}/>}/>
-          < Route path="/" render={() => <Signup/>}/>
-          < Route path="/" render={() => <Login submitHandler={this.signInHandler} />}/>
+          < Route path="/signup" render={() => <Signup submitHandler={this.reduxSignupSubmitHandler}/>}/>
+          < Route path="/login" render={() => <Login submitHandler={this.reduxSigninSubmitHandler} />}/>
+          < Route path="/post" render={() => <PostContainer />}/>
+
           
           </>
 
@@ -97,4 +133,12 @@ class App extends React.Component{
   }
 }
 
-export default App;
+function mdp(dispatch){
+  return {
+    login: (userObj) => dispatch(loginUser(userObj)),
+    signup: (userObj) => dispatch(signupUser(userObj)) 
+  }
+}
+
+
+export default connect(null, mdp)(App);

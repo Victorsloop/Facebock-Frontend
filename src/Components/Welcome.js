@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class Welcome extends Component {
 
@@ -11,21 +12,22 @@ class Welcome extends Component {
     render(){
 
         return(
-            // <>
-
-            // { this.props.user ? 
-                
-            //     <h1>welcome</h1>
-                
-            //     :
-                
-            //     <h1>no user</h1>
-                
-            // }
+           
+            <>
+            {this.props.user ? 
+            <>
+            <div></div>
+            </>
             
-            // </>
-                
+            :
+
             <h1> Welcome to the best social media built during the pandemic</h1>
+            }
+
+
+
+            </>
+                
             
     
         )
@@ -33,4 +35,11 @@ class Welcome extends Component {
     
 
 }
-export default Welcome 
+
+const msp = (state) => {
+    return{ user: state.user}
+
+}
+
+
+export default connect(msp, null)(Welcome) 
