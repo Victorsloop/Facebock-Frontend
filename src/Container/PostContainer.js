@@ -10,7 +10,8 @@ class PostContainer extends Component {
     state ={
         filterPost: "",
         postArray : [],
-        beenClicked:false
+        beenClicked:false,
+        user:null
     }
 
     componentDidMount(){
@@ -54,6 +55,12 @@ class PostContainer extends Component {
                 </>        
                 }
             </>
+            
+            // <>
+            
+            // {this.props.user.posts.forEach(post => { <Post content={post.content } /> } )}
+            // </>
+
         )
     }
 }
@@ -74,6 +81,8 @@ function mdp(dispatch){
     }
     
 }
+
+
 
 export default connect(msp,mdp)(PostContainer)
 

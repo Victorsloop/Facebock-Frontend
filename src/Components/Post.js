@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-// import {connect} from 'react-redux'
+ import {connect} from 'react-redux'
 
 
 class Post extends Component{
@@ -7,8 +7,8 @@ class Post extends Component{
         return(
             <div>
                 <h2>Users Posts</h2>
-                <h4>{this.props.user.content}</h4>
-                <h4>{this.props.user.img_url}</h4>
+                <h4>{this.props.user.posts.content}</h4>
+                <h4>{this.props.user.posts.img_url}</h4>
 
 
             </div>
@@ -18,4 +18,10 @@ class Post extends Component{
 
 }
 
-export default Post
+const msp = (state) => {
+    console.log("current state", state)
+    return { user: state.user}
+    
+}
+
+export default connect(msp,null)(Post)

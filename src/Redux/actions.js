@@ -1,4 +1,4 @@
-import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS} from './actionTypes'
+import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS, RETURNING} from './actionTypes'
 //Functions that reutrn actions, hold all our actions that return 
 export function incrementCounter(){
     return {type:INCREMENT}
@@ -48,7 +48,7 @@ export function loginUser(userObj) {
             .then(checkedUserObj => {
                 console.log("checkedUserObj:",checkedUserObj)
                 localStorage.setItem("token", checkedUserObj.jwt)
-                dispatch({type: LOGIN, payload: checkedUserObj})
+                dispatch({type: LOGIN, payload: checkedUserObj.user})
             })
             .catch(console.log)
     }
@@ -58,7 +58,7 @@ export function signupUser(userObj) {
 
 
     return function (dispatch, getState) {
-        console.log("userobj in signup",userObj)
+        // console.log("userobj in signup",userObj)
         fetch('http://localhost:5000/users', {
             method: "POST",
             headers: {
@@ -70,12 +70,12 @@ export function signupUser(userObj) {
             .then(r => r.json())
             .then(newUserObj => {
                 localStorage.setItem("token", newUserObj.jwt)
-                dispatch({type: SIGNUP, payload: newUserObj})
+                dispatch({type: SIGNUP, payload: newUserObj.user})
             })
             .catch(console.log)
     }
 }
 
-// export function returningUser(userObj) {
-//     return {type: RETURNING, payload: userObj}
-// }
+export function returningUser(userObj) {
+    return {type: RETURNING, payload: userObj}
+}

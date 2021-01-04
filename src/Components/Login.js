@@ -1,4 +1,6 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 class Login extends React.Component{
 
@@ -16,12 +18,33 @@ class Login extends React.Component{
     }
     render(){
         return(
+            <>
+            {this.props.user? 
+            
+            <div>
+                
+                <Redirect to="/signup" />
+
+            </div>
+            :
             <form onSubmit = {this.submitHandler}>
              <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.inputHandler} /> 
                 <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.inputHandler}/> 
             <input type="submit" value="Login"/>
         </form>
+            }
+            </>
+
         )
     }
 }
-export default Login 
+
+const msp = (state) => {
+    console.log("current state", state)
+    return { user: state.user}
+    
+
+
+}
+
+export default connect(msp, null)(Login) 
