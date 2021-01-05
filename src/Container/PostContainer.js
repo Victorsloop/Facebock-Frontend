@@ -12,7 +12,10 @@ class PostContainer extends Component {
         postArray : [],
         beenClicked:false,
         user:null
+
     }
+
+    
 
     componentDidMount(){
         this.props.getPosts()
@@ -32,6 +35,11 @@ class PostContainer extends Component {
         this.setState((prevState) => ({beenClicked: !prevState.beenClicked}))
     }
 
+    renderPosts = () => {
+        console.log("render posts", this.props)
+        // return this.state.user.posts.map(post => <Post key={post.id} postObj={post}/>)
+    }
+
 
     render() {
         console.log("post container props",this.props)
@@ -45,8 +53,8 @@ class PostContainer extends Component {
                 < FilterPost filter={this.state.filterPost} filterHandler={this.filterHandler}/>
                 <button onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
                 {this.renderPostForm()}
-                <Post user={this.props.user} />
-
+                {/* <Post user={this.props.user} /> */}
+                {this.renderPosts()}
                 </>
                 :
                 <>
@@ -65,9 +73,10 @@ class PostContainer extends Component {
     }
 }
 
-const msp = (state) => {
+function msp(state){
+
     console.log("current state", state)
-    return { user: state.user}
+    return { user: state.user, postArray: state.user.posts}
     
 
 

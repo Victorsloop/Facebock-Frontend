@@ -48,7 +48,7 @@ export function loginUser(userObj) {
             .then(checkedUserObj => {
                 console.log("checkedUserObj:",checkedUserObj)
                 localStorage.setItem("token", checkedUserObj.jwt)
-                dispatch({type: LOGIN, payload: checkedUserObj.user})
+                dispatch({type: LOGIN, payload: checkedUserObj})
             })
             .catch(console.log)
     }

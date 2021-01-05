@@ -4,14 +4,14 @@ import React, {Component} from 'react'
 
 class Post extends Component{
     render(){
+        const post = this.props.postObj
         return(
-            <div>
-                <h2>Users Posts</h2>
-                <h4>{this.props.user.posts.content}</h4>
-                <h4>{this.props.user.posts.img_url}</h4>
+            <>
+            <h2>Post content:{post.content}</h2>
+            <h2>Post user:{post.user}</h2>
+            <img alt={post.name} src={post.img_url}></img>
 
-
-            </div>
+            </>
 
         )
     }

@@ -134,7 +134,7 @@ class App extends React.Component{
           <>
 
           
-          < Route path="/post" render={() => <PostContainer />}/>
+          < Route path="/post" render={() => <PostContainer user={this.state.user} />}/>
           
 
           

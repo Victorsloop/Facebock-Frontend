@@ -3,12 +3,7 @@ import {connect} from 'react-redux'
 
 class Welcome extends Component {
 
-    constructor(props){
-        super()
-
-
-    }
-
+    
     render(){
 
         return(
