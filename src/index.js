@@ -5,12 +5,18 @@ import './App.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
-import {createStore,applyMiddleware} from 'redux'
+import {createStore, compose, applyMiddleware} from 'redux'
 import rootReducer from './Redux/rootReducer'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
+// import { devToolsEnhancer } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancer =  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+
+
+const store = createStore(rootReducer,composeEnhancer(applyMiddleware(thunk)))
 store.dispatch({type: "FETCH_POST"})
 
 ReactDOM.render(

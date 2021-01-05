@@ -3,7 +3,7 @@ import FilterPost from '../Components/FilterPost'
 import {connect} from 'react-redux'
 import { fetchPosts } from '../Redux/actions'
 import AddPost from '../Components/AddPost'
-import Post from '../Components/Post'
+// import Post from '../Components/Post'
 
 class PostContainer extends Component {
 
