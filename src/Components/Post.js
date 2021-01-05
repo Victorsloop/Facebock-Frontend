@@ -4,13 +4,13 @@ import React, {Component} from 'react'
 
 class Post extends Component{
     render(){
-        const post = this.props.postObj
+        // const post = this.props.postObj
         return(
             <>
-            <h2>Post content:{post.content}</h2>
+            {/* <h2>Post content:{post.content}</h2>
             <h2>Post user:{post.user}</h2>
-            <img alt={post.name} src={post.img_url}></img>
-
+            <img alt={post.name} src={post.img_url}></img> */}
+            POST Component
             </>
 
         )

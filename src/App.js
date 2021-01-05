@@ -20,7 +20,7 @@ class App extends React.Component{
 
   signInHandler = (userInfo) => {
     console.log("loggin in", userInfo)
-    fetch("http://localhost:5000/login", {
+    fetch("http://localhost:5000/api/v1/login", {
       method: "POST",
       headers: {
         accepts: "application/json",
@@ -34,7 +34,7 @@ class App extends React.Component{
   }
 
   signUpHandler = (userObj) => {
-    fetch('http://localhost:5000/users', {
+    fetch('http://localhost:5000/api/v1/users', {
       method: "POST",
       header: {
         accepts: "application/json",
@@ -50,7 +50,7 @@ class App extends React.Component{
   //   const token = localStorage.getItem("token")
   //   if(token){
   //     console.log("logged in token", token)
-  //     fetch("http://localhost:5000/login", {
+  //     fetch("http://localhost:3000/login", {
   //     method: "POST",
   //     headers: {
   //       accepts: "application/json",
@@ -67,7 +67,7 @@ class App extends React.Component{
   // componentDidMount(){
   //   const token = localStorage.getItem("token")
   //   if(token){
-  //     fetch('http://localhost:5000/login', {
+  //     fetch('http://localhost:3000/login', {
   //       method: "GET",
   //       headers: {
   //         "Authorization": 'Bearer ' + token
@@ -83,7 +83,7 @@ class App extends React.Component{
   componentDidMount(){
     const token = localStorage.getItem("token")
     if(token){
-      fetch('http://localhost:5000/profile', {
+      fetch('http://localhost:5000/api/v1/profile', {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -92,7 +92,7 @@ class App extends React.Component{
         .then(r => r.json())
         .then(returningUser => {
           console.log("returning user", returningUser)
-          this.props.returning(returningUser.user)
+          this.props.returning(returningUser)
         })
     }
   }

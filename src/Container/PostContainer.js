@@ -17,6 +17,8 @@ class PostContainer extends Component {
 
     
 
+    
+
     componentDidMount(){
         this.props.getPosts()
         }
@@ -36,8 +38,22 @@ class PostContainer extends Component {
     }
 
     renderPosts = () => {
+        
+        
+            
+        fetch("http://localhost:5000/api/v1/posts")
+        .then(r => r.json())
+        .then (arrayOfPost => {
+            console.log("FETCHING POSTS", arrayOfPost)
+            this.setState( {
+                postArray: arrayOfPost
+            })
+        })
+        .catch(console.log)
+            
+        
         console.log("render posts", this.props)
-        // return this.state.user.posts.map(post => <Post key={post.id} postObj={post}/>)
+        // return this.state.postArray.map(post => <Post key={post.id} postObj={post}/>)
     }
 
 
@@ -53,7 +69,7 @@ class PostContainer extends Component {
                 < FilterPost filter={this.state.filterPost} filterHandler={this.filterHandler}/>
                 <button onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
                 {this.renderPostForm()}
-                {/* <Post user={this.props.user} /> */}
+                <Post user={this.props.user} />
                 {this.renderPosts()}
                 </>
                 :
