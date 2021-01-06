@@ -17,7 +17,7 @@ export function fetchPosts(){
 }
 
 export function addPosts(newPostObject){
-    console.log("IN FETCH ACTION ADDING")
+    console.log("IN FETCH ACTION ADDING",newPostObject)
     return function (dispatch, getState){
         fetch("http://localhost:5000/api/v1/posts",{
             method:"POST",

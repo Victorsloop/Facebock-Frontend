@@ -2,13 +2,13 @@
 import './App.css';
 import React from 'react'
 import Welcome from './Components/Welcome'
-import MessengerContainer from './Container/MessengerContainer'
+
 import {Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import Login from './Components/Login'
 import Header from './Components/Header'
 import Navbar from './Components/Navbar'
-import PostContainer from './Container/PostContainer';
+import Wall from './Container/Wall';
 import { loginUser, signupUser, returningUser} from './Redux/actions'
 import { connect } from 'react-redux'
 
@@ -124,7 +124,7 @@ class App extends React.Component{
 
         {/* < Route path='/' component={HomePage}/> */}
 
-        {/* <PostContainer/> */}
+        
         
         < Route path="/welcome" render={() => <Welcome/>}/>
 
@@ -134,7 +134,7 @@ class App extends React.Component{
           <>
 
           
-          < Route path="/post" render={() => <PostContainer user={this.state.user} />}/>
+          < Route path="/post" render={() => <Wall user={this.state.user} />}/>
           
 
           
@@ -158,7 +158,10 @@ class App extends React.Component{
            <>
             { this.props.user ? 
             
-            <MessengerContainer />
+            <div>
+
+            </div>
+            
             :
             <div>
 

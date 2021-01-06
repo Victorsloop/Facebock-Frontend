@@ -6,8 +6,8 @@ class AddPost extends Component{
 
     state = {
         content: "",
-        img_url: ""
-        // likes:0
+        img_url: "",
+       
     }
 
     newPostHandler = (e) => {
@@ -22,17 +22,28 @@ class AddPost extends Component{
     }
 
     render(){
+        console.log("current state in addPost component",this.state.user)
         return(
             <>
             <h1> Share with your friends</h1>
             <form onSubmit={this.localAddPost}>
                 <input type="text" name="content"placeholder="Content" value={this.state.content} onChange={this.newPostHandler}/>
                 <input type="text" name="img_url"placeholder="Image" value={this.state.img_url} onChange={this.newPostHandler}/>
+                {/* <input type="text" name="Wall"placeholder="Wall" value={this.state.user.wall.id} /> */}
                 <button>POST!</button>
             </form>
             </>
         )
     }
+}
+
+function msp(state){
+    console.log("wallll",state)
+    
+    return{
+        user: state.user
+    }
+
 }
 
 function mdp(dispatch){
@@ -43,7 +54,7 @@ function mdp(dispatch){
     
 }
 
-export default connect(null, mdp)(AddPost)
+export default connect(msp, mdp)(AddPost)
 
 
 // {

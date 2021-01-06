@@ -3,7 +3,6 @@ import {combineReducers} from 'redux'
 //Responsible for managing our state, always returns a new state object , SETSTATE MERGEES informaiton this does not 
 
 const defaultState = {
-    // counter:0,
     user:null,
     posts:[]
     // api: [],
