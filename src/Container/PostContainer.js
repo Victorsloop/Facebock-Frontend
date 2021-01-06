@@ -3,7 +3,7 @@ import FilterPost from '../Components/FilterPost'
 import {connect} from 'react-redux'
 import { fetchPosts } from '../Redux/actions'
 import AddPost from '../Components/AddPost'
-// import Post from '../Components/Post'
+import Post from '../Components/Post'
 
 class PostContainer extends Component {
 
@@ -70,7 +70,7 @@ class PostContainer extends Component {
                 <button onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
                 {this.renderPostForm()}
                 <Post user={this.props.user} />
-                {this.renderPosts()}
+                {/* {this.renderPosts()} */}
                 </>
                 :
                 <>
@@ -92,7 +92,7 @@ class PostContainer extends Component {
 function msp(state){
 
     console.log("current state", state)
-    return { user: state.user, postArray: state.user.posts}
+    return { user: state.user.user, postArray: state.user.posts}
     
 
 

@@ -80,29 +80,22 @@ class App extends React.Component{
   //   }
   // }
 
-  componentDidMount(){
-    const token = localStorage.getItem("token")
-    if(token){
-      fetch('http://localhost:5000/api/v1/profile', {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
-        .then(r => r.json())
-        .then(returningUser => {
-          console.log("returning user", returningUser)
-          this.props.returning(returningUser)
-        })
-    }
-  }
-
-//   logout() {
-//     localStorage.clear();
-//     window.location.href = '/';
-// }
-
-// onClick={this.logout()}
+  // componentDidMount(){
+  //   const token = localStorage.getItem("token")
+  //   if(token){
+  //     fetch('http://localhost:5000/api/v1/profile', {
+  //       method: "GET",
+  //       headers: {
+  //         "Authorization": `Bearer ${token}`
+  //       }
+  //     })
+  //       .then(r => r.json())
+  //       .then(returningUser => {
+  //         console.log("returning user", returningUser)
+  //         this.props.returning(returningUser)
+  //       })
+  //   }
+  // }
 
   logoutHandler = (userObj)=> {
     localStorage.clear(userObj)

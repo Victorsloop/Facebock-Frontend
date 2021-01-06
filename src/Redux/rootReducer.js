@@ -4,7 +4,8 @@ import {combineReducers} from 'redux'
 
 const defaultState = {
     user:null,
-    posts:[]
+    posts:[],
+    counter:0
     // api: [],
 }
 

@@ -10,6 +10,7 @@ export function fetchPosts(){
         fetch("http://localhost:5000/api/v1/posts")
         .then(r => r.json())
         .then (arrayOfPost => {
+            console.log("IN ACTIONS SHOWING ARRAY",arrayOfPost)
             dispatch({type: FETCH_POSTS, payload : arrayOfPost})
         })
         .catch(console.log)
