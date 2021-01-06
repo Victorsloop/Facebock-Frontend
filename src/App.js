@@ -97,7 +97,17 @@ class App extends React.Component{
     }
   }
 
+//   logout() {
+//     localStorage.clear();
+//     window.location.href = '/';
+// }
 
+// onClick={this.logout()}
+
+  logoutHandler = (userObj)=> {
+    localStorage.clear(userObj)
+    window.location.href='/'
+  }
 
   reduxSigninSubmitHandler = (userObj) => {
     this.props.login(userObj)
@@ -112,7 +122,7 @@ class App extends React.Component{
       <div className={"parent"}>
         <div className="header-container">
         <Header />      
-       < Navbar/>    
+       < Navbar logoutHandler={this.logoutHandler}/>    
         </div>
 
         <div className="profile-container">          

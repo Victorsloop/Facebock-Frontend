@@ -3,25 +3,9 @@ import {combineReducers} from 'redux'
 //Responsible for managing our state, always returns a new state object , SETSTATE MERGEES informaiton this does not 
 
 const defaultState = {
-    // counter:0,
     user:null,
     posts:[]
     // api: [],
-}
-function counterReducer(prevState= defaultState.counter, action){
-    switch(action.type){
-        case "INCREMENT_COUNTER":
-        console.log("Reducer before", action)
-        console.log("Reducer after", action)
-         return ++prevState
-         case "DECREMENT_COUNTER":
-            console.log("Reducer before", action)
-            console.log("Reducer after", action)
-             return --prevState
-         default:
-        return prevState
-    }
-   
 }
 
 function userReducer(prevState= defaultState.user, action){
@@ -32,8 +16,8 @@ function userReducer(prevState= defaultState.user, action){
         case"SIGNUP":
             console.log("creating user", action.payload)
             return action.payload
-        
         case "GET_USER":
+            console.log("GETTING user", action.payload)
             return action.payload
         case "POST_USER":
             return [...prevState, action.payload]
@@ -43,11 +27,7 @@ function userReducer(prevState= defaultState.user, action){
 
             return prevState
                 }
-    
-
 }
-
-    
 function postsReducer(prevState = defaultState.posts, action){
     switch(action.type){
         case "FETCH_POSTS":
@@ -71,7 +51,6 @@ function postsReducer(prevState = defaultState.posts, action){
 
 
 const rootReducer =  combineReducers({
-    // counter: counterReducer,
     user: userReducer,
     posts: postsReducer
     
