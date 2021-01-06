@@ -18,7 +18,7 @@ export class HomePage extends Component {
     }
 
     submitHandler = (obj) => {
-        fetch("http://localhost:5000/users", {
+        fetch("http://localhost:5000/api/v1/users", {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

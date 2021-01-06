@@ -7,7 +7,7 @@ export function incrementCounter(){
 export function fetchPosts(){
     console.log("IN FETCH ACTION")
     return function (dispatch, getState){
-        fetch("http://localhost:5000/posts")
+        fetch("http://localhost:5000/api/v1/posts")
         .then(r => r.json())
         .then (arrayOfPost => {
             dispatch({type: FETCH_POSTS, payload : arrayOfPost})
@@ -19,7 +19,7 @@ export function fetchPosts(){
 export function addPosts(newPostObject){
     console.log("IN FETCH ACTION ADDING")
     return function (dispatch, getState){
-        fetch("http://localhost:5000/posts",{
+        fetch("http://localhost:5000/api/v1/posts",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export function addPosts(newPostObject){
 
 export function loginUser(userObj) {
     return function(dispatch, getState){
-        fetch('http://localhost:5000/login', {
+        fetch('http://localhost:5000/api/v1/login', {
             method: "POST",
             headers: {
                 "Accepts": "application/json",
@@ -59,7 +59,7 @@ export function signupUser(userObj) {
 
     return function (dispatch, getState) {
         // console.log("userobj in signup",userObj)
-        fetch('http://localhost:5000/users', {
+        fetch('http://localhost:5000/api/v1/users', {
             method: "POST",
             headers: {
                 "Accepts": "application/json",
