@@ -6,8 +6,7 @@ class AddPost extends Component{
 
     state = {
         content: "",
-        img_url: "",
-       
+        img_url: ""
     }
 
     newPostHandler = (e) => {

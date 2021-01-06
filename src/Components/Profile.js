@@ -1,5 +1,6 @@
-import React {Component, Profiler} from 'react'
-// import {connect} from 'react-redux'
+import React,{Component} from 'react'
+import {connect} from 'react-redux'
+
 class Profile extends Component{
     render(){
         return(
@@ -9,4 +10,10 @@ class Profile extends Component{
 
 }
 
-export default Profile
+function msp() => {
+    return(
+        null
+    )
+}
+
+export default connect(msp,null)(Profile)
