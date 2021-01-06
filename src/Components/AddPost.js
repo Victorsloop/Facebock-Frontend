@@ -6,7 +6,8 @@ class AddPost extends Component{
 
     state = {
         content: "",
-        img_url: ""
+        img_url: "",
+        wall_id: this.props.user.wall.id
     }
 
     newPostHandler = (e) => {
@@ -17,18 +18,18 @@ class AddPost extends Component{
     localAddPost = (e) => {
         e.preventDefault()
         this.props.createPosts(this.state)
-        this.setState({content:"", img_url:""})
+        this.setState({content:"", img_url:"",wall: null})
     }
 
     render(){
-        console.log("current state in addPost component",this.state.user)
+        console.log("current props in addPost component",this.props)
         return(
             <>
             <h1> Share with your friends</h1>
             <form onSubmit={this.localAddPost}>
                 <input type="text" name="content"placeholder="Content" value={this.state.content} onChange={this.newPostHandler}/>
                 <input type="text" name="img_url"placeholder="Image" value={this.state.img_url} onChange={this.newPostHandler}/>
-                {/* <input type="text" name="Wall"placeholder="Wall" value={this.state.user.wall.id} /> */}
+                <input type="text" name="Wall"placeholder="Wall" value={1} onChange={this.props.user.wall.id}/>
                 <button>POST!</button>
             </form>
             </>

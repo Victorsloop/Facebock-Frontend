@@ -92,7 +92,7 @@ class Wall extends Component {
 function msp(state){
 
     console.log("current state", state)
-    return { user: state.user.user, postArray: state.user.posts}
+    return { user: state.user, postArray: state.user.posts}
     
 
 
