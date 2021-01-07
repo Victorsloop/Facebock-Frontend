@@ -9,6 +9,7 @@ import Login from './Components/Login'
 import Header from './Components/Header'
 import Navbar from './Components/Navbar'
 import Wall from './Container/Wall';
+import MessengerContainer from './Container/MessengerContainer';
 import { loginUser, signupUser, returningUser} from './Redux/actions'
 import { connect } from 'react-redux'
 
@@ -180,19 +181,15 @@ class App extends React.Component{
 
           <div  className="messenger-container">
 
-           <>
-            { this.props.user ? 
+           
             
-            <div>
-
-            </div>
+          <div> 
             
-            :
-            <div>
+            <MessengerContainer/>
 
-            </div>
-            }
-           </> 
+          </div>
+           
+           
             
           </div>
           

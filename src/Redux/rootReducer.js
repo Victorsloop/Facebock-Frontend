@@ -20,12 +20,15 @@ function userReducer(prevState= defaultState.user, action){
         case "GET_USER":
             console.log("GETTING user", action.payload)
             return action.payload
+        case "LOG_OUT":
+            console.log("LOG_OUT user", action.payload)
+            return action.payload
         case "POST_USER":
             return [...prevState, action.payload]
         case "UPDATE_USER":
             return [...prevState, action.payload]     
-        case "ADD_USER_POSTS":
-            return { user: [prevState], posts: [prevState.posts,action.payload]}
+        // case "ADD_USER_POSTS":
+        //     return {  posts: [prevState.posts,action.payload]}
             // return [{ user: prevState.user, posts: ...prevState.posts, action.payload }]
 
 
@@ -38,18 +41,21 @@ function postsReducer(prevState = defaultState.posts, action){
     switch(action.type){
         case "FETCH_POSTS":
             console.log("IN POST REDUCER Fetching", action)
+            
             return action.payload
             case "ADD_POSTS":
-                console.log("IN POST REDUCER Adding",[...prevState, action])
+                console.log("IN POST REDUCER Adding",[...prevState, action.payload])
                 return [...prevState, action.payload]
-                case "EDIT_POSTS":
+            case "EDIT_POSTS":
                     console.log("IN POST REDUCER", action)
                     return prevState
-                    case "DELETE_POSTS":
-                        console.log("IN POST REDUCER Deleting", action)
-                        return prevState
-                    default:
-                        return prevState
+            case "DELETE_POSTS":
+                    console.log("IN POST REDUCER Deleting", action)
+                    return prevState
+            case "ADD_USER_POSTS":
+                    return [...prevState, action.payload]
+        default:
+                return prevState
     }
 }
 

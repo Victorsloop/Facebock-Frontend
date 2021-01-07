@@ -23,22 +23,23 @@ class Wall extends Component {
 
 
     componentDidMount(){
-        
-
         fetch("http://localhost:5000/api/v1/posts")
         .then(r => r.json())
         .then (arrayOfPost => {
-            const filteredPost = []
-
+            
+            const filteredPosts = []
             arrayOfPost.forEach( post=>{
                 if(post.user.id === this.props.user.id){
-                    filteredPost.push(post)
+                    
+                    filteredPosts.push(post)
                 }
             })    
 
-            this.setState({newPostArray:filteredPost})
-            // this.setState({newPostArray:arrayOfPost})
-            console.log("IN WALL DIDMOUNT SHOWING ARRAY",this.state.newPostArray)
+            // this.setState({newPostArray:filteredPost})
+            // dispatch({type: FETCH_POSTS, payload : filteredPosts})
+            console.log("IN WALL DIDMOUNT SHOWING filteredPosts",filteredPosts)
+            this.props.getPosts(filteredPosts)
+            
         })
         .catch(console.log)
     }
@@ -86,9 +87,13 @@ class Wall extends Component {
     
     newRenderPosts = () => {
         // console.log("newrenderpost this.props.user", this.props.user)
-        console.log("newrenderpost this.state.newPostarray", this.state.newPostArray)
-        return this.state.newPostArray.map(post => <Post key={post.id} postObj={post} user={post.user.username}/>)
-        // return this.props.user.posts.map(post => <Post key={post.id} postObj={post} user={post.user}/>)
+        console.log("newrenderpost this.props.postarray", this.props.postArray)
+        // return this.props.postArray.map(post => <Post key={post.id} postObj={post} user={post.user.username}/>)
+        // return this.props.postArray.map(post => <Post key={post.id} postObj={post} content={post.content}/>)
+        return this.props.postArray.map(post => <Post key={post.id} postObj={post}/>)
+        
+        
+        // return this.props.newPostArray.map(post => <Post key={post.id} postObj={post} username={post.user.username}/>)
 
     }
 
@@ -99,7 +104,7 @@ class Wall extends Component {
 
 
             <>
-                { localStorage.token && this.props.user.wall ?
+                { localStorage.token ?
 
                 <>
                 
@@ -132,7 +137,7 @@ class Wall extends Component {
 function msp(state){
 
     console.log("current state in msp in wall.js", state.user)
-    return { user: state.user}
+    return { user: state.user, postArray: state.posts}
     // return { user: state.user, postArray: state.user.posts}
     
 
@@ -141,7 +146,8 @@ function msp(state){
 
 function mdp(dispatch){
     return{
-        getPosts: () => dispatch(fetchPosts())
+        getPosts: (filteredPosts) => dispatch(fetchPosts(filteredPosts))
+
         // createPost: (newPostObject) => dispatch(addPost(newPostObject))
     
     }

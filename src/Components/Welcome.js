@@ -3,31 +3,31 @@ import {connect} from 'react-redux'
 
 class Welcome extends Component {
 
-    componentDidMount(){
-        const userWall = this.props.userObj.wall
-        const token = localStorage.getItem("token")
-        if(userWall){
-            console.log("user has a wall")
-        } else if (userWall === null && token ) {
-            const newWallObj = {
-                    user_id: this.props.userObj.id
-                  }
-                  fetch("http://localhost:5000/api/v1/walls",{
-                        method:"POST",
-                        headers:{
-                            "Content-Type": "application/json",
-                            "Accepts": "application/json"
-                        },
-                        body:JSON.stringify(newWallObj)
-                    })
-                    .then(r => r.json())
-                    .then (data=>{
-                        console.log("new user wall created!!!!!!",data)}
-                        )
-                    .catch(console.log)
-        }
+    // componentDidMount(){
+    //     const userWall = this.props.userObj.wall
+    //     const token = localStorage.getItem("token")
+    //     if(userWall){
+    //         console.log("user has a wall")
+    //     } else if (userWall === null && token ) {
+    //         const newWallObj = {
+    //                 user_id: this.props.userObj.id
+    //               }
+    //               fetch("http://localhost:5000/api/v1/walls",{
+    //                     method:"POST",
+    //                     headers:{
+    //                         "Content-Type": "application/json",
+    //                         "Accepts": "application/json"
+    //                     },
+    //                     body:JSON.stringify(newWallObj)
+    //                 })
+    //                 .then(r => r.json())
+    //                 .then (data=>{
+    //                     console.log("new user wall created!!!!!!",data)}
+    //                     )
+    //                 .catch(console.log)
+    //     }
 
-    }
+    // }
 
     
     render(){

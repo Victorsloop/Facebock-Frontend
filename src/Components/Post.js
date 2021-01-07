@@ -10,11 +10,12 @@ class Post extends Component{
         return(
             <>
         
-            {this.props.postObj && this.props.user ? 
+            {this.props.user ? 
              <>
-            <h4>Post user:{this.props.user}</h4> 
+            <h4>Post user:{this.props.postObj.username}</h4> 
             <h4>Post content:{this.props.postObj.content}</h4>
             <img alt={this.props.user.username} style={{ maxWidth: "70vw", maxHeight: "20vh" }}src={this.props.postObj.img_url}></img>
+            
             </>
             :
             <>
@@ -30,7 +31,7 @@ class Post extends Component{
 
 const msp = (state) => {
     // console.log("current state", state)
-    // return { user: state.user}
+    return { user: state.user}
     
 }
 

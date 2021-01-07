@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {NavLink, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
+import { reduxLogout } from '../Redux/actions'
 
 
 class Navbar extends Component{
@@ -10,8 +11,10 @@ class Navbar extends Component{
     }
 
     logout = () => {
+        
         console.log(localStorage.clear())
         localStorage.clear("token")
+        this.props.reduxLogout()
         this.setState({clicked:true})
     }
     render (){
@@ -78,5 +81,11 @@ const msp = (state) => {
 
 }
 
-
-export default connect(msp,null)(Navbar)
+function mdp(dispatch){
+    return{
+        reduxLogout: () => dispatch(reduxLogout())
+    
+    }
+    
+}
+export default connect(msp,mdp)(Navbar)
