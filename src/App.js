@@ -95,7 +95,28 @@ class App extends React.Component{
           this.props.returning(returningUser)
           
         })
+      
     }
+    //  else if(!!this.props.current_wall) {
+
+    //   const newWallObj = {
+    //     user_id:this.props.user.id
+    //   }
+    //   fetch("http://localhost:5000/api/v1/walls",{
+    //         method:"POST",
+    //         headers:{
+    //             "Content-Type": "application/json",
+    //             "Accepts": "application/json"
+    //         },
+    //         body:JSON.stringify(newWallObj)
+    //     })
+    //     .then(r => r.json())
+    //     .then (console.log)
+    //     .catch(console.log)
+    
+    // }
+
+
   }
 
   logoutHandler = (userObj)=> {
@@ -144,7 +165,7 @@ class App extends React.Component{
           
 
           
-          < Route path="/" render={() => <Welcome user={this.state.user}/>}/>
+          {/* < Route path="/" render={() => <Welcome user={this.state.user}/>}/> */}
           < Route path="/signup" render={() => <Signup submitHandler={this.reduxSignupSubmitHandler}/>}/>
           < Route path="/login" render={() => <Login submitHandler={this.reduxSigninSubmitHandler} />}/>
 
@@ -184,6 +205,10 @@ class App extends React.Component{
   }
 }
 
+function msp(state){
+  // return {current_wall: state.user.wall}
+}
+
 function mdp(dispatch){
   return {
     login: (userObj) => dispatch(loginUser(userObj)),
@@ -193,4 +218,4 @@ function mdp(dispatch){
 }
 
 
-export default connect(null, mdp)(App);
+export default connect(msp, mdp)(App);

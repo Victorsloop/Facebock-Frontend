@@ -3,6 +3,31 @@ import {connect} from 'react-redux'
 
 class Welcome extends Component {
 
+    componentDidMount(){
+        const userWall = this.props.userObj.wall
+        if(userWall){
+            console.log("user has a wall")
+        } else {
+            const newWallObj = {
+                    user_id: this.props.userObj.id
+                  }
+                  fetch("http://localhost:5000/api/v1/walls",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type": "application/json",
+                            "Accepts": "application/json"
+                        },
+                        body:JSON.stringify(newWallObj)
+                    })
+                    .then(r => r.json())
+                    .then (data=>{
+                        console.log("new user wall created!!!!!!",data)}
+                        )
+                    .catch(console.log)
+        }
+
+    }
+
     
     render(){
 
@@ -11,7 +36,7 @@ class Welcome extends Component {
             <>
             {localStorage.token ? 
             <>
-            <div></div>
+            <div>User logged</div>
             </>
             
             :
@@ -32,7 +57,7 @@ class Welcome extends Component {
 }
 
 const msp = (state) => {
-    return{ user: state.user}
+    return{ userObj: state.user}
 
 }
 

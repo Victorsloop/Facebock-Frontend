@@ -26,7 +26,16 @@ class Wall extends Component {
         fetch("http://localhost:5000/api/v1/posts")
         .then(r => r.json())
         .then (arrayOfPost => {
-            this.setState({newPostArray:arrayOfPost})
+            const filteredPost = []
+
+            arrayOfPost.forEach( post=>{
+                if(post.user.id === this.props.user.id){
+                    filteredPost.push(post)
+                }
+            })    
+
+            this.setState({newPostArray:filteredPost})
+            // this.setState({newPostArray:arrayOfPost})
             console.log("IN WALL DIDMOUNT SHOWING ARRAY",this.state.newPostArray)
         })
         .catch(console.log)
@@ -53,7 +62,7 @@ class Wall extends Component {
         this.setState((prevState) => ({beenClicked: !prevState.beenClicked}))
     }
 
-    renderPosts = () => {
+    // renderPosts = () => {
         
         
             
@@ -68,13 +77,16 @@ class Wall extends Component {
         // .catch(console.log)
             
         
-        console.log("render posts", this.props.postArray)
+    //     console.log("render posts", this.props.postArray)
 
-        return this.props.postArray.map(post => <Post key={post.id} postObj={post} user={this.props.user}/>)
-    }
+    //     return this.props.postArray.map(post => <Post key={post.id} postObj={post} user={this.props.user}/>)
+    // }
     
     newRenderPosts = () => {
-        return this.state.newPostArray.map(post => <Post key={post.id} postObj={post} user={this.props.user}/>)
+        // console.log("newrenderpost this.props.user", this.props.user)
+        console.log("newrenderpost this.state.newPostarray", this.state.newPostArray)
+        return this.state.newPostArray.map(post => <Post key={post.id} postObj={post} user={post.user.username}/>)
+        // return this.props.user.posts.map(post => <Post key={post.id} postObj={post} user={post.user}/>)
 
     }
 
