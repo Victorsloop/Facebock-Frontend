@@ -7,8 +7,13 @@ class AddPost extends Component{
     state = {
         content: "",
         img_url: "",
-        wall_id: this.props.user.wall.id
+        wall_id: 1
     }
+
+    componentDidMount(){
+        console.log("props in AddPost.js", this.props)
+        // this.setState({wall_id: this.props.user.user.wall.id})
+    }   
 
     newPostHandler = (e) => {
         this.setState({[e.target.name]: e.target.value})
@@ -18,7 +23,8 @@ class AddPost extends Component{
     localAddPost = (e) => {
         e.preventDefault()
         this.props.createPosts(this.state)
-        this.setState({content:"", img_url:"",wall: null})
+        this.setState({content:"", img_url:""})
+        this.props.rerender()
     }
 
     render(){
@@ -29,7 +35,7 @@ class AddPost extends Component{
             <form onSubmit={this.localAddPost}>
                 <input type="text" name="content"placeholder="Content" value={this.state.content} onChange={this.newPostHandler}/>
                 <input type="text" name="img_url"placeholder="Image" value={this.state.img_url} onChange={this.newPostHandler}/>
-                <input type="text" name="Wall"placeholder="Wall" value={1} onChange={this.props.user.wall.id}/>
+                <input type="text" name="Wall"placeholder="Wall" value={this.state.wall_id} onChange={this.state.wall_id}/>
                 <button>POST!</button>
             </form>
             </>

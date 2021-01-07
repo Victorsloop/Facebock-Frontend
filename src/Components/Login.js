@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
+// import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 class Login extends React.Component{
@@ -19,11 +19,10 @@ class Login extends React.Component{
     render(){
         return(
             <>
-            {this.props.user? 
+            {localStorage.token? 
             
             <div>
-                
-                <Redirect to="/signup" />
+                {/* <Redirect to="/signup" /> */}
 
             </div>
             :
@@ -40,7 +39,7 @@ class Login extends React.Component{
 }
 
 const msp = (state) => {
-    console.log("current state", state)
+    console.log("current state LOGIN.JS", state)
     return { user: state.user}
     
 

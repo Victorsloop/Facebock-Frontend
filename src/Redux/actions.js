@@ -1,4 +1,4 @@
-import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS, GET_USER} from './actionTypes'
+import {INCREMENT,FETCH_POSTS, LOGIN, SIGNUP,ADD_POSTS, GET_USER,ADD_USER_POSTS} from './actionTypes'
 //Functions that reutrn actions, hold all our actions that return 
 export function incrementCounter(){
     return {type:INCREMENT}
@@ -29,7 +29,7 @@ export function addPosts(newPostObject){
             body:JSON.stringify(newPostObject)
         })
         .then(r => r.json())
-        .then (postObject => dispatch({type: ADD_POSTS ,payload: postObject}))
+        .then (postObject => dispatch({type: ADD_USER_POSTS ,payload: postObject}))
         .catch(console.log)
     }
 }
@@ -79,4 +79,6 @@ export function signupUser(userObj) {
 
 export function returningUser(userObj) {
     return {type: GET_USER, payload: userObj}
+    
+    
 }

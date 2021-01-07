@@ -11,17 +11,33 @@ class Wall extends Component {
         filterPost: "",
         postArray : [],
         beenClicked:false,
-        user:null
+        user:null,
+        newPostArray : []
 
     }
 
-    
+    // componentDidMount(){
+    //     console.log("HITTING THIS WALL")
+    //     this.props.getPosts()
+    //     }
 
-    
 
     componentDidMount(){
-        this.props.getPosts()
-        }
+        fetch("http://localhost:5000/api/v1/posts")
+        .then(r => r.json())
+        .then (arrayOfPost => {
+            this.setState({newPostArray:arrayOfPost})
+            console.log("IN WALL DIDMOUNT SHOWING ARRAY",this.state.newPostArray)
+        })
+        .catch(console.log)
+    }
+
+    // componentDidUpdate( prevState) {
+    //     if (prevState.newPostArray !== this.state.newPostArray) {
+    //       console.log('array up2DATE')
+    //     //   this.componentDidMount()
+    //     }
+    //   }
 
     filterHandler = (e) => {
         this.setState({filterPost: e.target.value})
@@ -29,7 +45,7 @@ class Wall extends Component {
 
     renderPostForm = () => {
         if(this.state.beenClicked){
-            return (< AddPost/>)
+            return (< AddPost rerender={this.newRenderPosts} />)
         }
     }
 
@@ -41,38 +57,48 @@ class Wall extends Component {
         
         
             
-        fetch("http://localhost:5000/api/v1/posts")
-        .then(r => r.json())
-        .then (arrayOfPost => {
-            console.log("FETCHING POSTS", arrayOfPost)
-            this.setState( {
-                postArray: arrayOfPost
-            })
-        })
-        .catch(console.log)
+        // fetch("http://localhost:5000/api/v1/posts")
+        // .then(r => r.json())
+        // .then (arrayOfPost => {
+        //     console.log("FETCHING POSTS", arrayOfPost)
+        //     this.setState( {
+        //         postArray: arrayOfPost
+        //     })
+        // })
+        // .catch(console.log)
             
         
-        console.log("render posts", this.props)
-        // return this.state.postArray.map(post => <Post key={post.id} postObj={post}/>)
+        console.log("render posts", this.props.postArray)
+
+        return this.props.postArray.map(post => <Post key={post.id} postObj={post} user={this.props.user}/>)
+    }
+    
+    newRenderPosts = () => {
+        return this.state.newPostArray.map(post => <Post key={post.id} postObj={post} user={this.props.user}/>)
+
     }
 
 
     render() {
-        console.log("post container props",this.props)
+        console.log("wall.js props",this.props)
         return (
 
 
             <>
-                {this.props.user ? 
+                { localStorage.token ?
+
                 <>
                 
                 < FilterPost filter={this.state.filterPost} filterHandler={this.filterHandler}/>
                 <button onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
-                {this.renderPostForm()}
-                <Post user={this.props.user} />
+                 {this.renderPostForm()}
+                {this.newRenderPosts()}
                 {/* {this.renderPosts()} */}
+                
                 </>
+                
                 :
+
                 <>
                 <h1>not logged in</h1>
 
@@ -91,8 +117,9 @@ class Wall extends Component {
 
 function msp(state){
 
-    console.log("current state", state)
-    return { user: state.user, postArray: state.user.posts}
+    console.log("current state in msp in wall.js", state.user)
+    return { user: state.user}
+    // return { user: state.user, postArray: state.user.posts}
     
 
 

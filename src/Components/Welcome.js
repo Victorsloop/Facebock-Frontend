@@ -7,9 +7,9 @@ class Welcome extends Component {
     render(){
 
         return(
-           
+            
             <>
-            {this.props.user ? 
+            {localStorage.token ? 
             <>
             <div></div>
             </>

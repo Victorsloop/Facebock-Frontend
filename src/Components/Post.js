@@ -5,13 +5,23 @@ import React, {Component} from 'react'
 class Post extends Component{
     render(){
         // const post = this.props.postObj
+        // console.log("post props", this.props)
+        // console.log("CONTENT", this.props.postObj.content)
         return(
             <>
-            {/* <h2>Post content:{post.content}</h2>
-            <h2>Post user:{post.user}</h2>
-            <img alt={post.name} src={post.img_url}></img> */}
-            POST Component
+        
+            {this.props.postObj && this.props.user ? 
+            <>
+            <h4>Post user:{this.props.user.username}</h4>
+            <h4>Post content:{this.props.postObj.content}</h4>
+            <img alt={this.props.user.username} style={{ maxWidth: "70vw", maxHeight: "20vh" }}src={this.props.postObj.img_url}></img>
             </>
+            :
+            <>
+            <div></div>
+            </>
+            }
+            </> 
 
         )
     }
