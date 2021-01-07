@@ -4,24 +4,17 @@ import React, {Component} from 'react'
 
 class Card extends Component{
     render(){
-
+        console.log("this is the cards",this.props.cardObj)
         return(
             <>
             <div>
-                Username: {this.props.username}
+               Name: {this.props.cardObj.first_name} {this.props.cardObj.last_name}
+               Online:always
+               <img alt={this.props.cardObj.username} style={{ maxWidth: "70vw", maxHeight: "20vh" }}src={this.props.cardObj.avatar}></img>
+
+                
+
             </div>
-            {/* <div>
-                First name: {this.props.first_name}
-            </div>
-            <div>
-                Last name: {this.props.first_name}
-            </div>
-            <div>
-                Hometown: {this.props.first_name}
-            </div>
-            <div>
-                Age: {this.props.age}
-            </div> */}
             </>
         )
     }
@@ -29,8 +22,8 @@ class Card extends Component{
 }
 
 const msp = (state) => {
-    // console.log("current state", state)
-    // return { user: state.user}
+    console.log("current state", state)
+    return { user: state.user}
     
 }
 

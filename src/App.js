@@ -1,11 +1,12 @@
 
 import './App.css';
 import React from 'react'
-import Welcome from './Components/Welcome'
-
 import {Route} from 'react-router-dom'
-import Signup from './Components/Signup';
+
+import Welcome from './Components/Welcome'
+import Signup from './Components/Signup'
 import Login from './Components/Login'
+import Profile from './Components/Profile'
 import Header from './Components/Header'
 import Navbar from './Components/Navbar'
 import Wall from './Container/Wall';
@@ -142,7 +143,7 @@ class App extends React.Component{
         </div>
 
         <div className="profile-container">          
-        {/* PROFILE */}
+        <Profile />
         </div>
 
         <div  className="post-container">          
