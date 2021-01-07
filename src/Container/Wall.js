@@ -23,6 +23,8 @@ class Wall extends Component {
 
 
     componentDidMount(){
+        
+
         fetch("http://localhost:5000/api/v1/posts")
         .then(r => r.json())
         .then (arrayOfPost => {
@@ -97,7 +99,7 @@ class Wall extends Component {
 
 
             <>
-                { localStorage.token ?
+                { localStorage.token && this.props.user.wall ?
 
                 <>
                 

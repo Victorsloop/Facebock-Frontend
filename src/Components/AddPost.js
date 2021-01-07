@@ -7,10 +7,11 @@ class AddPost extends Component{
     state = {
         content: "",
         img_url: "",
-        wall_id: 1
+        wall_id: null
     }
 
     componentDidMount(){
+        this.setState({wall_id: this.props.user.id})
         console.log("props in AddPost.js", this.props)
         // this.setState({wall_id: this.props.user.user.wall.id})
     }   

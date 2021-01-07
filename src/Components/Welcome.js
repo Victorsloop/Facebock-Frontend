@@ -5,9 +5,10 @@ class Welcome extends Component {
 
     componentDidMount(){
         const userWall = this.props.userObj.wall
+        const token = localStorage.getItem("token")
         if(userWall){
             console.log("user has a wall")
-        } else {
+        } else if (userWall === null && token ) {
             const newWallObj = {
                     user_id: this.props.userObj.id
                   }

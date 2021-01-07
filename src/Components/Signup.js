@@ -8,7 +8,7 @@ class Signup extends React.Component{
     state = {
         username:"",
         password:"",
-        finished:null
+        // finished:null
     }
 
     inputHandler = (e) => {
