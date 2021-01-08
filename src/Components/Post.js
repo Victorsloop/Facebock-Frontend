@@ -3,7 +3,16 @@ import React, {Component} from 'react'
 
 
 class Post extends Component{
+
+
+    // deletePost(id) => {
+    //     fetch(`http://localhost:5000/api/v1/posts/${this.props.postObj.id}`,{
+    //         method:"DELETE"
+    //     })
+    
     render(){
+
+
         // const post = this.props.postObj
         // console.log("post props", this.props)
         // console.log("CONTENT", this.props.postObj.content)

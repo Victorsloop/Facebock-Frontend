@@ -107,7 +107,7 @@ export function signupUser(userObj) {
 }
 
 export function returningUser(userObj) {
-    return {type: GET_USER, payload: userObj}
+    return {type: GET_USER, payload: userObj.user}
     
     
 }

@@ -8,6 +8,12 @@ class Signup extends React.Component{
     state = {
         username:"",
         password:"",
+        age:"",
+        hometown:"",
+        first_name:"",
+        last_name:"",
+        avatar:""
+        
         // finished:null
     }
 
@@ -33,10 +39,14 @@ class Signup extends React.Component{
             :
             <>
             <form onSubmit = {this.submitHandler} >
+                <input type="text" name="first_name" placeholder="first_name" value={this.state.first_name} onChange={this.inputHandler} /> 
+                <input type="text" name="last_name" placeholder="last_name" value={this.state.last_name} onChange={this.inputHandler} /> 
                 <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.inputHandler} /> 
                 <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.inputHandler}/> 
-                {/* <input type="text" name="Hometown" placeholder="Hometown" value={this.state.hometown} onChange={this.inputHandler}/> 
-                <input type="number" name="Age" placeholder="Age" value={this.state.age} onChange={this.inputHandler}/>  */}
+                <input type="text" name="hometown" placeholder="Hometown" value={this.state.hometown} onChange={this.inputHandler}/> 
+                <input type="number" name="age" placeholder="Age" value={this.state.age} onChange={this.inputHandler}/> 
+                <input type="number" name="avatar" placeholder="PIC" value={this.state.avatar} onChange={this.inputHandler}/> 
+                
                 <input type="submit" value="Sign Up"/>
             </form>
             </>
@@ -57,3 +67,10 @@ class Signup extends React.Component{
 
 // export default connect(null, mdp)(Signup)
 export default Signup
+
+// age:"",
+// username: "",
+// vaccinated: null,
+// first_name: "",
+// last_name: "",
+// avatar: "",

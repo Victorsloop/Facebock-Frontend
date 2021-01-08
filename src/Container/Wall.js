@@ -51,9 +51,9 @@ class Wall extends Component {
     //     }
     //   }
 
-    filterHandler = (e) => {
-        this.setState({filterPost: e.target.value})
-    }
+    // filterHandler = (e) => {
+    //     this.setState({filterPost: e.target.value})
+    // }
 
     renderPostForm = () => {
         if(this.state.beenClicked){
@@ -108,7 +108,7 @@ class Wall extends Component {
 
                 <>
                 
-                < FilterPost filter={this.state.filterPost} filterHandler={this.filterHandler}/>
+                {/* < FilterPost  /> */}
                 <button onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
                  {this.renderPostForm()}
                 {this.newRenderPosts()}

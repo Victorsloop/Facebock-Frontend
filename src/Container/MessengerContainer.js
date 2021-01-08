@@ -41,6 +41,7 @@ class MessengerContainer extends React.Component{
     }
 
     filterHandler = (e) => {
+        console.log(e.target.value)
         this.setState({filterUser: e.target.value})
     }
 
@@ -49,10 +50,8 @@ class MessengerContainer extends React.Component{
     renderUserCards = () => {
         console.log("newrenderpost this.state.arrayOfUser", this.state.arrayOfUser)
         let desiredUser = this.state.arrayOfUser.filter(desiredUserObj => desiredUserObj.first_name.toLowerCase().includes(this.state.filterUser.toLowerCase()))
-        return desiredUser.map(card => <Card key={card.id} cardObj={card} filter={this.state.filterUser} filterHandler={this.filterHandler}/>)
-
-        // return this.state.arrayOfUser.map(card => <Card key={card.id} cardObj={card} filter={this.state.filterUser} filterHandler={this.filterHandler}/>)
-        // return this.props.user.posts.map(post => <Post key={post.id} postObj={post} user={post.user}/>)
+        console.log("rendering desired usercards",desiredUser)
+        return desiredUser.map(card => <Card key={card.id} cardObj={card} />)
 
     }
 
@@ -66,7 +65,7 @@ class MessengerContainer extends React.Component{
                 
                 {this.props.user? 
                 <>
-                
+                  < FilterPost filter={this.state.filterUser} filterHandler={this.filterHandler} />
                 {this.renderUserCards()}
                 </>
                 :
