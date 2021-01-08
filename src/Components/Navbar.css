@@ -1,0 +1,10 @@
+.navbar-buttons {
+    background-color: #0E397C; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+  }

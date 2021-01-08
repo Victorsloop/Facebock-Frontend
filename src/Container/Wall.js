@@ -90,7 +90,7 @@ class Wall extends Component {
         console.log("newrenderpost this.props.postarray", this.props.postArray)
         // return this.props.postArray.map(post => <Post key={post.id} postObj={post} user={post.user.username}/>)
         // return this.props.postArray.map(post => <Post key={post.id} postObj={post} content={post.content}/>)
-        return this.props.postArray.map(post => <Post key={post.id} postObj={post}/>)
+        return this.props.postArray.map(post => <Post className="post-css" key={post.id} postObj={post} username={post.user.username}/>)
         
         
         // return this.props.newPostArray.map(post => <Post key={post.id} postObj={post} username={post.user.username}/>)

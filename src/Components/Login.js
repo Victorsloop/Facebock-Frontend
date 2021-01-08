@@ -1,4 +1,5 @@
 import React from 'react'
+import './Stylesheet.css' 
 // import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -8,6 +9,7 @@ class Login extends React.Component{
         username:"",
         password:""
     }
+    
     inputHandler = (e) => {
         this.setState({[e.target.name]:e.target.value})
         console.log(e.target.value)
@@ -26,11 +28,16 @@ class Login extends React.Component{
 
             </div>
             :
+            <div class="login-box">
             <form onSubmit = {this.submitHandler}>
+            <div class="user-box">
              <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.inputHandler} /> 
-                <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.inputHandler}/> 
+            <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.inputHandler}/> 
             <input type="submit" value="Login"/>
-        </form>
+            </div>
+            </form>
+            </div>
+                   
             }
             </>
 

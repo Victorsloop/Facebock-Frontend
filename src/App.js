@@ -133,20 +133,25 @@ class App extends React.Component{
   reduxSignupSubmitHandler = (userObj) => {
     this.props.signup(userObj)
   }
+  
 
   render(){
     return(
       <div className={"parent"}>
         <div className="header-container">
-        <Header />      
+        <Header />
+      <div class="center">
        < Navbar logoutHandler={this.logoutHandler}/>    
+      </div>
+       
         </div>
 
         <div className="profile-container">          
         <Profile />
         </div>
 
-        <div  className="post-container">          
+        <div  className="post-container" >       
+        <div class="postcont">
         {/* POSTS */}
 
         {/* < Route path='/' component={HomePage}/> */}
@@ -179,6 +184,7 @@ class App extends React.Component{
         </>
 
         </div> 
+        </div>   
 
           <div  className="messenger-container">
 

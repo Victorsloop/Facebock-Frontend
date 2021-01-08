@@ -4,16 +4,21 @@
   grid-template-rows: repeat(10, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  overflow: scroll;
+  
+  /* background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F468726273716482991%2F&psig=AOvVaw3FTBzbN4H8FipWsGml1sQv&ust=1610167273635000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCICqyNTCi-4CFQAAAAAdAAAAABAs"); */
 
-  background-color: lightblue;
+
+  background-color: a0abc0;
   height: 100vh;
   width: 100%;
   }
   
   .header-container { 
     grid-area: 1 / 1 / 3 / 11;
-    text-align: center;
+    
     border: 1px solid black;
+    background-image: url();
    }
 
   .profile-container { 
@@ -21,20 +26,46 @@
     text-align: center;
     border: 2px solid black;
     background-color: white;
-   }
-
+    
+  }
+  
   .post-container { 
     grid-area: 3 / 3 / 11 / 9;
     text-align: center;
     border: 2px solid black;
-    background-color: white;
+    background-color: rgb(0, 68, 255);
+    overflow: auto;;
+    background-image: url("https://i.pinimg.com/originals/88/15/63/881563d6444b370fa4ceea0c3183bb4c.gif");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white
     
-   }
-
+  }
+  
   .messenger-container { 
     grid-area: 3 / 9 / 11 / 11;
     text-align: center;
     border: 2px solid black;
+    
     background-color: white;
+    overflow: scroll;
    }
+
+
+   .center{
+    text-align: center;
+   }
+   
+   .text-right{
+    text-align: right;
+   }
+
+   .text-left{
+    text-align: left;
+   }
+   
+
+
 

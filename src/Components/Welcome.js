@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
+import '../App.css'
+
 class Welcome extends Component {
 
     // componentDidMount(){
@@ -37,7 +39,11 @@ class Welcome extends Component {
             <>
             {localStorage.token ? 
             <>
-            <div>User logged</div>
+            <div>
+            <h1> Woooooooo! you made it baby!!!       you got an account at FaceBock!</h1>
+            <img alt="FaceBock" className="center" style={{ maxWidth: "40vw", maxHeight: "40vh" }}src={"https://thumbor.forbes.com/thumbor/711x474/https://specials-images.forbesimg.com/imageserve/5f8b53d83ad376bd758e6b23/960x0.jpg?fit=scale"}></img>
+
+            </div>
             </>
             
             :

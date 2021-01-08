@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import {NavLink, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import { reduxLogout } from '../Redux/actions'
+import '../App.css';
+import './Stylesheet.css'
+import './Navbar.css'
 
 
 class Navbar extends Component{
@@ -16,6 +19,7 @@ class Navbar extends Component{
         localStorage.clear("token")
         this.props.reduxLogout()
         this.setState({clicked:true})
+
     }
     render (){
         return (
@@ -23,7 +27,7 @@ class Navbar extends Component{
             {this.props.userObj? 
             <>
 
-            <ul>
+            {/* <ul>
                 <NavLink to="/welcome">
                 <li>Melcome</li>
                 </NavLink>
@@ -38,33 +42,54 @@ class Navbar extends Component{
 
                 }
                 
-            </ul>
+            </ul> */}
+
+            <div>
+                <NavLink to="/welcome">
+                <button class="navbar-buttons">Melcome</button>
+                </NavLink>
+                <NavLink to="/post">
+                <button className="navbar-buttons">Post</button>
+                </NavLink>
+                <button className="navbar-buttons" onClick= {this.logout}>Logout</button>
+                {this.state.clicked === true? 
+                <Redirect to="/welcome"/>
+                :
+                <div></div>
+
+                }
+                
+            </div>
+
             </>
             :
             <>
 
-            <ul>
+            <div>
                 <NavLink to="/welcome">
-                <li>Welcome</li>
+                <button className="navbar-buttons">Welcome</button>
                 </NavLink>
                 <NavLink to="/signup">
-                <li>Signup</li>
+                <button className="navbar-buttons">Signup</button>
                 </NavLink>
                 <NavLink to="/login">
-                <li>Login</li>
+                <button className="navbar-buttons">Login</button>
                 </NavLink>
-                {/* <NavLink to="/post">
-                <li>Post</li>
-                </NavLink>
-                <button onClick= {this.logout}>Logout</button>
-                {this.state.clicked? 
-                <Redirect to="/"/>
-                :
-                <div>LOADING</div>
+               
+            </div>
 
-                } */}
-                
-            </ul>
+            {/* <div>
+                <NavLink to="/welcome">
+                <button>Welcome</button>
+                </NavLink>
+                <NavLink to="/signup">
+                <button>Signup</button>
+                </NavLink>
+                <NavLink to="/login">
+                <button>Login</button>
+                </NavLink>
+               
+            </div> */}
             </>
             }
 

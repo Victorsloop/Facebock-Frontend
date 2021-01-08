@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {addPosts} from '../Redux/actions'
+import './Stylesheet.css' 
+
 
 class AddPost extends Component{
 
@@ -37,7 +39,10 @@ class AddPost extends Component{
                 <input type="text" name="content"placeholder="Content" value={this.state.content} onChange={this.newPostHandler}/>
                 <input type="text" name="img_url"placeholder="Image" value={this.state.img_url} onChange={this.newPostHandler}/>
                 <input type="text" name="Wall"placeholder="Wall" value={this.state.wall_id} onChange={this.state.wall_id}/>
-                <button>POST!</button>
+                <button class="button">POST! <div class="button__horizontal"></div><div class="button__vertical"></div></button>
+                
+              
+            
             </form>
             </>
         )
@@ -79,3 +84,9 @@ export default connect(msp, mdp)(AddPost)
 //       "age": 29,
 //       "hometown": "Flushing"
 //     }
+
+{/* <button class="button">
+	Button
+	<div class="button__horizontal"></div>
+	<div class="button__vertical"></div>
+</button> */}

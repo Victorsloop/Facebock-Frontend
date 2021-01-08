@@ -38,7 +38,9 @@ class Signup extends React.Component{
             </>
             :
             <>
+            <div class="login-box">
             <form onSubmit = {this.submitHandler} >
+            <div class="user-box">
                 <input type="text" name="first_name" placeholder="first_name" value={this.state.first_name} onChange={this.inputHandler} /> 
                 <input type="text" name="last_name" placeholder="last_name" value={this.state.last_name} onChange={this.inputHandler} /> 
                 <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.inputHandler} /> 
@@ -48,29 +50,17 @@ class Signup extends React.Component{
                 <input type="number" name="avatar" placeholder="PIC" value={this.state.avatar} onChange={this.inputHandler}/> 
                 
                 <input type="submit" value="Sign Up"/>
+                </div>
             </form>
+            </div>
             </>
 
             }
             </>
         )
     }
+
+
 }
 
-// function mdp(dispatch){
-//     return {
-//         createUsers: (newUserObject) => dispatch(signupUser(newUserObject))
-//     }
-// }
-
-
-
-// export default connect(null, mdp)(Signup)
 export default Signup
-
-// age:"",
-// username: "",
-// vaccinated: null,
-// first_name: "",
-// last_name: "",
-// avatar: "",
