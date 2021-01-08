@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FilterPost from '../Components/FilterPost'
+// import FilterPost from '../Components/FilterPost'
 import {connect} from 'react-redux'
 import { fetchPosts } from '../Redux/actions'
 import AddPost from '../Components/AddPost'
@@ -109,7 +109,7 @@ class Wall extends Component {
                 <>
                 
                 {/* < FilterPost  /> */}
-                <button onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
+                <button class="addpostbutton" onClick={this.postClickHandler}>{this.state.beenClicked? "Dont feel like Posting": "Show The World"}</button>
                  {this.renderPostForm()}
                 {this.newRenderPosts()}
                 {/* {this.renderPosts()} */}

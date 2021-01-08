@@ -77,10 +77,12 @@ class Profile extends Component{
             <>
             {this.props.userObj? 
             
-            <div>
+            <div class="profilecard">
             
-            <h1>{this.props.userObj.username}</h1>
             <img alt={this.props.userObj.username} style={{ maxWidth: "70vw", maxHeight: "20vh" }}src={this.props.userObj.avatar}></img>
+            <h1>{this.props.userObj.username}</h1>
+            <p class="title">CEO & Founder</p>
+            <p><button class="profilebutton">Contact</button></p>
 
             
             {
@@ -129,7 +131,7 @@ class Profile extends Component{
         
 
 
-            <button onClick={this.editClicked} >{this.state.editClicked? "Im perfect": "Edit Profiel"} </button>
+            <button class="editbutton" onClick={this.editClicked} >{this.state.editClicked? "Im perfect": "Edit Profile"} </button>
             </div>
             :
             <div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {returningUser} from '../Redux/actions'
+import './Stylesheet.css'
 
 class EditUser extends React.Component {
 
@@ -59,7 +60,7 @@ class EditUser extends React.Component {
                 <input type="text" name="last_name"placeholder={this.props.user.last_name} value={this.state.last_name} onChange={this.userFormHandler}/>
                 <input type="text" name="avatar"placeholder={this.props.user.avatar} value={this.state.avatar} onChange={this.userFormHandler}/>
                 
-                <button>Correct!</button>
+                <button class="editbutton">Correct!</button>
                 {/* <button>DELETE 🥲</button> */}
                 </form>
                 </>
